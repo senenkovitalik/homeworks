@@ -1,0 +1,39 @@
+#cv {
+	border: 1px solid black;
+	margin: 0 auto;
+	display: table;
+	padding: 25px 40px;
+}
+
+table {
+	font-family: "Verdana", sans-serif;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 5px;
+}
+
+ul {
+	-webkit-padding-start: 20px;
+}
+
+a.social {
+	text-decoration: none;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.upper-border {
+	border-top: 10px solid #99ff33;
+}
+
+.bottom-border {
+	border-bottom: 10px solid #99ff33;
+}
+
+.big-font {
+	font-size: 20px;
+}

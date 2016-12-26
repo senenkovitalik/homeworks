@@ -1,0 +1,105 @@
+body {
+	margin: 0;
+}
+
+/*************** Menu *******************/
+
+#menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #59a2ea;
+	overflow: hidden;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu li:last-child {
+	float: right;
+}
+
+#menu li a {
+	text-decoration: none;
+	padding: 15px;
+	color: white;
+	display: block;
+	font-family: "Vernada", sans-serif;
+}
+
+#menu li a:hover {
+	background-color: #4997f9;
+}
+
+/*************** Columns ************/
+
+.columns {
+	width: 60%;
+	margin: 20px auto 20px;
+	display: table;
+	
+}
+
+.two-col {
+	width: 50%;
+	padding: 20px;
+	box-sizing: border-box;
+	display: table-cell;
+}
+
+.three-col {
+	width: 33.3%;
+	padding: 20px;
+	box-sizing: border-box;
+	display: table-cell;
+}
+
+.pretty p {
+	font-family: "Vernada", sans-serif;
+	text-align: justify;
+	text-indent: 50px;
+}
+
+/* colors for background*/
+.back-orange {
+	background-color: orange;
+}
+
+.back-green {
+	background-color: lightgreen;
+}
+
+.back-grey {
+	background-color: grey;
+}
+
+/************** Banner ********************/
+
+#banner {
+	position: fixed;
+	left: 60px;
+	top: 70px;
+}
+
+/****** Div inside another div ************/
+
+#parent {
+	position: relative;
+	margin: 0 auto 20px;
+	width: 60%;
+	height: 300px;
+	background-color: lightblue; 
+}
+
+#child {
+	width: 200px;
+	height: 150px;
+	position: absolute;
+	background-color: brown;
+	margin: auto; 
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}

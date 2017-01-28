@@ -7,9 +7,24 @@
 <body>
 
 <form action="serverside.php" method="post" enctype="multipart/form-data">
-	Додайте фото до галереї <input type="file" name="photos[]" multiple required>
-	<input type="submit" name="Submit">
+	Додайте фото до галереї <input type="file" id="file" name="photos[]" multiple>	
+	<input type="submit" id="submit" name="submit" disabled>
 </form>
 
 </body>
+
+<!-- Safari don't support "required" attr. So we need to write JavaScript hack))) -->
+<script type="text/javascript">
+	var disableBtn = function() {
+		var fileList = document.getElementById("file").files;
+		var submitBtn = document.getElementById("submit");
+		if (fileList.length == 0) {
+			submitBtn.disabled = true;
+		} else {
+			submitBtn.disabled = false;
+		}
+	}
+	document.querySelector("#file").onchange = disableBtn;
+</script>
+
 </html>

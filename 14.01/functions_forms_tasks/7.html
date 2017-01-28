@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>7</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		#textarea {
+			height: 100px;
+			width: 400px;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Тут ви можете залишити свої коментарі</h1>
+
+<div id="comments"></div>
+
+<div>
+	<table>
+		<tr>
+			<td>Ваше і'мя</td>
+			<td><input type="text" id="name" name="name"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="email" id="email" name="email"></td>
+		</tr>
+	</table>
+	<textarea id="textarea" name="comment"></textarea>
+	<br>
+	<button type="button" name="submit" onclick="sendComment()">Надіслати</button>
+</div>
+
+<script type="text/javascript">
+	function sendComment() {
+		var name = document.getElementById("name").value;
+		var email = document.getElementById("email").value;
+		var comment = document.getElementById("textarea").value;
+
+		if (comment === "") {
+			alert("Напишіть, будь-ласка, що небудь!");
+			return;
+		}
+
+		if (name === "") { name = "Anonymous"; }
+		if (email === "") { email = "None"; }
+
+		var d = new Date();
+		var date = d.toLocaleString(); 
+
+		var comments = document.getElementById("comments");
+		var div = document.createElement("div");
+		div.innerHTML =
+			'<b>'+name+'</b><br>' +
+			'<b>'+email+'</b><br>' +
+			'<span>'+comment+'</span><br>' +
+			'Posted at '+date +
+			'<hr>';
+		comments.insertBefore(div, comments.firstChild); 
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+	background-image: url("img/cork-wallet.png");
+}
+
+#textarea, #swarewords {
+	height: 100px;
+	width: 400px;
+}
+
+#container {
+	width: 70%;
+	margin: auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+.commentform {
+	margin-top: 50px;
+}
+
+.swarewordsform {
+	margin-top: 50px;
+}
+
+.comnt {
+	border: 1px solid black;
+	border-radius: 10px;
+
+	padding: 15px;
+	margin: 5px;
+}

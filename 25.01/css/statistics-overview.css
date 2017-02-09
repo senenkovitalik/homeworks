@@ -1,0 +1,92 @@
+.statistics-overview {
+    position: relative;
+    width: 140px; /* 120px width + min margins from left & right = 10px */
+
+    /*
+        If you want to make some effect of adaptive components,
+        then you may play with the width settings below
+     */
+    /*width: 100%;*/
+    /*min-width: 120px;*/
+    /*max-width: 300px;*/
+}
+
+.statistics-overview_progress-number {
+    position: absolute;
+    left: 50%;
+    /* Must be the same as progress-bar height. In such case we have number straight below the arc*/
+    top: 60px;
+    font-size: 28px;
+    color: #848484;
+    /*
+        As we have a value which starts straight above the arc's center,
+        then we need to:
+         - move on the half width of the number content = move to 50% left with X axis
+         - move on the full height of the number content = move to 100% top with Y axis
+    */
+    transform: translate(-50%, -100%);
+}
+
+.statistics-overview_progress-label {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+    font-size: 18px;
+    color: #848484;
+}
+
+.statistics-overview_progress-bar {
+    /*  position: hidden;
+
+        Used to make work overflow = hidden.
+        If you remove it, then selectors 'before', 'after' will take all effects from the nearest
+        parent with position relative / fixed and be a part of content for that item.
+
+        As an example in current layout you may comment this property
+        and add to the class 'statistics-overview' above additional style overflow: hidden;
+    */
+    position: relative;
+    height: 60px;
+    width: 120px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.statistics-overview_progress-bar:before {
+    content: "";
+    position: absolute;
+    height: inherit;
+    width: inherit;
+
+    border-radius: 60px 60px 0 0;
+    border: 20px solid red;
+    box-sizing: border-box;
+    border-bottom: 0;
+}
+
+.statistics-overview_progress-bar-arc {
+    position: absolute;
+    height: inherit;
+    width: inherit;
+
+    border-radius: 60px 60px 0 0;
+    border: 20px solid grey;
+    box-sizing: border-box;
+    border-bottom: 0;
+
+    /*
+        Moving top left point to the middle of the 'circle'
+        for performing other 'transform' actions
+    */
+    transform-origin: 50% 100%;
+
+    /*
+        In real projects it will be calculated by JS and inserted into 'style' attribute following next rule:
+                var statisticsValue = 0.7;
+                rotationAngel = round(180 * statistics)
+
+                -- where round will round the result of multiplication
+        In current example it was done manually
+    */
+    /*transform: rotate(90deg);*/
+}

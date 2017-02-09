@@ -1,0 +1,199 @@
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+body {
+    height: 1000px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: rgba(99, 193, 184, 0.5);
+    -webkit-transform: translateZ(0);
+    z-index: 999;
+}
+
+.header-label {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    width: 35%;
+    text-align: center;
+}
+
+.header-label span:first-child {
+    font-weight: 800;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.header-label span:last-child {
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 100;
+}
+
+.header-nav {
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    width: 65%;
+}
+
+.header-nav a {
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: #fff;
+    padding: 7px 13px;
+    border-radius: 3px;
+}
+
+.glyphicon-search {
+    color: white;
+    font-size: 0.9em;
+}
+
+.glyphicon-menu-down {
+    color: white;
+    font-size: 0.6em;
+    vertical-align: 3px;
+    margin-right: 5px;
+    visibility: hidden;
+}
+
+.submenu {
+    position: absolute;
+    display: none;
+    text-align: left;
+    text-transform: none;
+
+    list-style-type: none;
+    background-color: #E9635A;
+    padding: 5px;
+
+    left: 0;
+    top: 40px;
+
+    border: 4px solid #E9635A;
+    border-radius: 4px;
+}
+
+.arrow-up {
+    position: absolute;
+
+    top: -9px;
+    width: 0; 
+    height: 0; 
+    
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #E9635A;
+}
+
+.submenu li {
+    color: #fff;
+}
+
+.header-nav a:hover {
+    background-color: #E9635A;
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-nav a:hover .submenu {
+    display: inline-table;
+}
+
+.header-nav a:hover .glyphicon-menu-down {
+    visibility: visible;
+}
+
+.header-fix {
+    position: relative;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: rgb(99, 193, 184);
+}
+
+.content {
+    height: 1000px;
+}
+
+/* Adaptive layouting with flexbox*/
+.company-year-statistics-overview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 580px; /* 560px width from mockup + 10px min margin for first & last child inside*/
+    margin: 40px auto;
+}
+
+/* Adaptive layouting with blocks*/
+/*.company-year-statistics-overview {*/
+    /*width: 100%;*/
+    /*max-width: 580px;*/
+    /*margin: 40px auto;*/
+/*}*/
+
+/*.company-year-statistics-overview:before,*/
+/*.company-year-statistics-overview:after {*/
+    /*content: " ";*/
+    /*display: table;*/
+/*}*/
+
+/*.company-year-statistics-overview:after {*/
+    /*clear: both;*/
+/*}*/
+
+/*.company-year-statistics-overview > .statistics-overview {*/
+    /*float: left;*/
+/*}*/
+
+footer {
+    width: 100%;
+}
+
+.footer_navigation {
+    padding: 35px 0;
+    background-color: rgb(99, 193, 184);
+}
+
+.footer_social-networks {
+    padding: 10px;
+    background-color: rgb(82, 164, 155);
+}
+
+@media only screen and (max-width: 767px) {
+    /*
+        For mobile layouts
+     */
+}

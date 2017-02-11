@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>6</title>
+</head>
+<body>
+<script type="text/javascript">
+	"use strict";
+	var book1, book2;
+
+	book1 = {};
+	book2 = {};
+
+	book1.title = "Kill'em'All";
+	book1.publishedYear = 1983;
+	book1.year = 1982;
+
+	book2.title = "Master of Puppets";
+	book2.publishedYear = 1986;
+	book2.year = 1985;
+
+	for(var prop in book1) {
+		console.log(book1[prop]);
+	}
+
+	for(var prop in book2) {
+		console.log(book2[prop]);
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>2</title>
+</head>
+<body>
+<script type="text/javascript">
+	"use strict";
+	var first, second;
+
+	do {
+		first = getNumber("first");
+		if (first === false) {continue;}
+		break;
+	} while (true);
+
+	do {
+		second = getNumber("second");
+		if (second === false) {continue;}
+		window.alert(first + second);
+		break;
+	} while (true);	
+
+	function getNumber(order) {
+		var x = window.prompt("Enter "+order+" number", "");
+		if (x !== "" && x !== null && !isNaN(Number(x))) {
+			return Number(x);
+		} else {
+			notNumber();
+			return false;
+		}
+	}
+
+	function notNumber() {
+		window.alert("Please, enter the number.");
+	}
+</script>
+</body>
+</html>

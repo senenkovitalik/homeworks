@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>17</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	"use strict";
+	var num = {
+		value: 0,
+		printValue: function() {
+			var hundreds, decimals, units, val, str = "";
+
+			val = this.value;
+			hundreds = Math.floor(val / 100);
+			decimals = Math.floor((val - hundreds * 100) / 10);
+			units = val % 10;
+			
+			if (hundreds != 0) {
+				switch (hundreds) {
+					case 1: 
+						str = "сто ";
+						break;
+					case 2: 
+						str = "двісті ";
+						break;
+					case 3: 
+						str = "триста ";
+						break;
+					case 4: 
+						str = "чотириста ";
+						break;
+					case 5: 
+						str = "пятсот ";
+						break;
+					case 6: 
+						str = "шістсот ";
+						break;
+					case 7: 
+						str = "сімсот ";
+						break;
+					case 8: 
+						str = "вісімсот ";
+						break;
+					case 9: 
+						str = "дев'ятьсот ";
+						break;
+				}
+			}
+
+			if (decimals != 0) {
+				switch (decimals) {
+					case 1: 
+						switch (units) {
+							case 0: str += "десять";
+								break;
+							case 1: str += "одинадцять";
+								break;
+							case 2: str += "дванадцять";
+								break;
+							case 3: str += "тринадцять";
+								break;
+							case 4: str += "чотирнадцять";
+								break;
+							case 5: str += "п'ятнадцять";
+								break;
+							case 6: str += "шістнадцять";
+								break;
+							case 7: str += "сімнадцять";
+								break;
+							case 8: str += "вісімнадцять";
+								break;
+							case 9: str += "дев'ятнадцять";
+								break;
+						}
+						break;
+					case 2: 
+						str += "двадцять ";
+						break;
+					case 3: 
+						str += "тридцять ";
+						break;
+					case 4: 
+						str += "сорок ";
+						break;
+					case 5: 
+						str += "п'ятдесят ";
+						break;
+					case 6: 
+						str += "шістдесят ";
+						break;
+					case 7: 
+						str += "сімдесят ";
+						break;
+					case 8: 
+						str += "вісімдесят ";
+						break;
+					case 9: 
+						str += "дев'яносто ";
+						break;
+				}
+			}
+
+			if (decimals != 1 && units > 0) {
+				switch (units) {
+					case 0:
+						str += "нуль";
+						break;
+					case 1: 
+						str += "один";
+						break;
+					case 2: 
+						str += "два";
+						break;
+					case 3: 
+						str += "три";
+						break;
+					case 4: 
+						str += "чотири";
+						break;
+					case 5: 
+						str += "п'ять";
+						break;
+					case 6: 
+						str += "шість";
+						break;
+					case 7: 
+						str += "сім";
+						break;
+					case 8: 
+						str += "вісім";
+						break;
+					case 9: 
+						str += "дев'ять";
+						break;
+				}
+			}
+
+			console.log(str);
+		}
+	}
+
+	num.value = 909;
+	num.printValue();
+</script>
+</body>
+</html>

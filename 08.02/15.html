@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>15</title>
+	<style>
+		div {
+			height: 50px;	
+		}
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+	"use strict";
+
+	var body = document.body,
+		div,
+		i = 0;
+
+	for (i; i<10; i++) {
+		div = document.createElement("DIV");
+		div.style.backgroundColor = color();
+		body.appendChild(div);
+	}
+
+	function color() {
+	    var letters = '0123456789ABCDEF';
+	    var color = '#';
+	    for (var i = 0; i < 6; i++) {
+	        color += letters.charAt(Math.floor(Math.random() * 16));
+	    }
+	    return color;
+	}
+</script>
+</body>
+</html>

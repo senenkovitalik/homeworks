@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>13</title>
+	<style>
+		td {
+			width: 50px;
+			height: 50px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+<script type="text/javascript">
+	"use strict";
+	var fcolor = "brown",
+		scolor = "violet",
+		contents = [
+			["Vitaliy", "Senenko", 26, 200],
+			["Ivan", "Ivanov", 30, 132],
+			["Petro", "Dorosh", 45, 345],
+			["Nataliya", "Semerich", 41, 456]
+		];
+
+	printDesk(fcolor, scolor, contents);
+
+	function printDesk(fcolor, scolor, contents) {
+		var rows, cols, table, tr, td, text, i = 0, j = 0, odd = true;
+		
+		rows = contents.length;
+		cols = contents[0].length;
+		table = document.createElement("TABLE");
+
+		for (i; i < rows; i++) {
+			tr = document.createElement("TR");
+			for (j; j < cols; j++) {
+				td = document.createElement("TD");
+
+				if (j % 2 == odd) {
+					td.style.backgroundColor = fcolor;
+				} else {
+					td.style.backgroundColor = scolor;
+				}
+
+				text = document.createTextNode(contents[i][j]);
+				td.appendChild(text);
+				tr.appendChild(td);
+			}
+			table.appendChild(tr);
+			j = 0;
+
+			if (odd) {
+				odd = false;
+			} else {
+				odd = true;
+			}
+		}
+		document.body.appendChild(table);
+	}
+</script>
+</body>
+</html>

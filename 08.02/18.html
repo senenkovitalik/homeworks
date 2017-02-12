@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>18</title>
+</head>
+<body>
+
+<p id="text"></p>
+
+<script type="text/javascript">
+	"use strict";
+	var str = "Some string with some words";
+
+	showOpacity(str);
+
+	function showOpacity(str) {
+		var opacity = Math.floor(Math.random() * 10) / 10;
+		var p = document.getElementById("text");
+		var text = document.createTextNode(str);
+		p.appendChild(text);
+		p.style.opacity = opacity;
+	}
+</script>
+</body>
+</html>

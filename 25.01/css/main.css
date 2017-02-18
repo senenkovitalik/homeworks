@@ -177,7 +177,9 @@ header {
 }
 
 .content {
-    height: 1000px;
+    /*height: 1000px;*/
+    background-color: #F0F0F0;
+
 }
 
 /* Slider section */
@@ -276,6 +278,119 @@ header {
     border-radius: 5px;
     padding: 5px 20px;
     margin-top: 10px;
+}
+
+/* Main content */
+
+.main-content {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* Top services */
+
+.top-services {
+    background-color: #ECECEC;
+    border-radius: 3px;
+    padding: 27px 30px;
+}
+
+.top-services .text {
+    float: left;
+}
+
+.top-services .text span {
+    color: #7F8C8D;
+}
+
+.top-services .text span:first-child {
+    font-size: 20px;
+}
+
+.top-services .text span:last-child {
+    font-size: 10px;
+}
+
+.top-services a {
+    background-color: #FC645A;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+    padding: 18px 45px;
+}
+
+.top-services a:focus, .top-services a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+/* Badges */
+
+.bages {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.bage {
+    background-color: #F8F8F8;
+    width: 22%;
+    height: auto;
+    text-align: center;
+    padding: 52px 20px 70px;
+    position: relative;
+}
+
+.bage:hover {
+    background-color: white;
+}
+
+.bage .glyphicon {
+    font-size: 55px;
+    color: #62BDBD;
+}
+
+.bage:hover .glyphicon {
+    color: #E8645A;
+}
+
+.bage .bage-name {
+    text-transform: uppercase;
+    color: #7F8C8C;
+    margin-top: 20px;
+    margin-bottom: 38px;
+    font-weight: bold;
+}
+
+.bage .description {
+    color: #7F8C8C;
+}
+
+.bage a {
+    position: absolute;
+    left: 10%;
+    bottom: -20px;
+    text-decoration: none;
+    background-color: #62BDBD;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 0;
+    white-space: nowrap;
+    width: 80%;
+}
+
+.bage a:hover {
+    background-color: #E8645A;
+    color: black;
+    text-decoration: none;
+}
+
+.bage a:focus {
+    text-decoration: none;
 }
 
 /* Adaptive layouting with flexbox*/

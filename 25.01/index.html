@@ -56,13 +56,39 @@
 
 <div class="content">
     <div class="slider">
-        <figure>
-            <img src="img/slider.jpg">
-            <img src="img/slider2.jpg">
-            <img src="img/slider3.jpg">
-            <img src="img/slider4.png">
-        </figure>
+        <div class="mySlides myfade">
+            <img src="img/slide1.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides myfade">
+            <img src="img/slide2.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides myfade">
+            <img src="img/slide3.jpg" style="width: 100%;">
+        </div>
+
+        <div class="mySlides myfade">
+            <img src="img/slide4.png" style="width: 100%;">
+        </div>
+
+        <div class="labe">
+            <span>vestibulum</span>
+            <div>Maecenas tincidunt, augue et rutrum condimentum, libero lectus mattis orci, ut commodo.</div>
+        </div>
+
+        <a href="#" class="prev" onclick="plusSlides(-1)">&#10094;&#10094;</a>
+        <a href="#" class="next" onclick="plusSlides(1)">&#10095;&#10095;</a>
     </div>
+    <br>
+
+    <div style="text-align: center;">
+        <span class="rect" onclick="currentSlide(1)"></span>
+        <span class="rect" onclick="currentSlide(2)"></span>
+        <span class="rect" onclick="currentSlide(3)"></span>
+        <span class="rect" onclick="currentSlide(4)"></span>
+    </div>
+
     <div class="company-year-statistics-overview">
         <div class="statistics-overview">
             <div class="statistics-overview_progress-bar">
@@ -107,5 +133,8 @@
         Social Networks: ...
     </div>
 </footer>
+
+<script type="text/javascript" src="js/slider.js"></script>
+
 </body>
 </html>

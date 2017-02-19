@@ -178,7 +178,7 @@ header {
 
 .content {
     /*height: 1000px;*/
-    background-color: #F0F0F0;
+    /*background-color: #F0F0F0;*/
 
 }
 
@@ -334,6 +334,7 @@ header {
     flex-flow: row nowrap;
     justify-content: space-between;
     margin-top: 50px;
+    padding-bottom: 75px;
 }
 
 .bage {
@@ -391,6 +392,86 @@ header {
 
 .bage a:focus {
     text-decoration: none;
+}
+
+/**************************** 
+    Gallery section 
+*****************************/
+
+.gallery {
+    /*width: 80%;*/
+    background-color: #ECECEC;
+    padding-top: 70px;
+}
+
+.header-text {
+    text-transform: uppercase;
+    font-size: 30px;
+    text-align: center;
+    color: #E8645A;
+}
+
+.header-description {
+    text-align: center;
+    color: #7F8C8C;
+}
+
+.photos {
+    width: 80%;
+    height: auto;
+    margin: 70px auto 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.photo {
+    z-index: 10;
+    width: 33%;
+    height: auto;
+    background-color: #C1C7C8;
+    border-radius: 5px;
+    padding: 10px 5px 0 5px;
+    transition: transform 1s ease, 
+                -ms-transform 1s ease, 
+                -webkit-transform 1s ease;
+}
+
+img {
+    border-radius: 5px;
+    width: 100%;
+    
+}
+
+.photo:hover {
+    z-index: 11;
+    -ms-transform: scale(1.3, 1.3);  /*IE 9 */
+    -webkit-transform: scale(1.3, 1.3);  /*Safari*/ 
+    transform: scale(1.3, 1.3);
+}
+
+.dots {
+    padding: 0 10px 5px 10px;
+    position: relative;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.rectan {
+    display: inline-block;
+    width: 15px;
+    height: 7px;
+    background-color: white;
+    border-radius: 3px;
+    position: absolute;
+    right: 15px;
+    top: 9px;
 }
 
 /* Adaptive layouting with flexbox*/

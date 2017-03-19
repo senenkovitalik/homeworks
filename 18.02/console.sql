@@ -87,3 +87,122 @@
 # WHERE YEAR(o.orderDate) = 2004
 # GROUP BY office
 # HAVING order_count < 15;
+
+# 11) Офисы с менее чем 15 заказов за год
+
+# SELECT of.officeCode AS office,
+#        COUNT(o.orderNumber) AS orders
+# FROM offices of
+# JOIN employees e
+# ON of.officeCode = e.officeCode
+# JOIN customers c
+# ON e.employeeNumber = c.salesRepEmployeeNumber
+# JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# WHERE YEAR(o.orderDate) = 2005
+# GROUP BY office
+# HAVING orders < 15;
+
+# 12) Выбор офисов, кроме конкретных
+
+# SELECT *
+# FROM offices o
+# WHERE o.officeCode NOT IN (2, 4);
+
+# 13) День месяца, месяц, год, сумма платежей
+
+# SELECT DAY(p.paymentDate) AS `day`,
+#        MONTH(p.paymentDate) AS `month`,
+#        YEAR(p.paymentDate) AS `year`,
+#        SUM(p.amount) AS total_amount
+# FROM payments p
+# GROUP BY p.paymentDate
+# ORDER BY `year`, `month`, `day` ASC;
+
+# 14) Месяц, год, максимальная сумма платежей
+
+# SELECT MONTH(p.paymentDate) AS `month`,
+#        YEAR(p.paymentDate) AS `year`,
+#        MAX(p.amount) AS max_amount
+# FROM payments p
+# GROUP BY `month`, `year`
+# ORDER BY `year`, `month`;
+
+# 15)  Клиенты, которые не сделали заказ
+
+# SELECT c.customerName AS clients_without_orders
+# FROM customers c
+# LEFT JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# WHERE o.orderNumber IS NULL ;
+
+# 16) Период заказов клиентов
+
+# SELECT o1.customerNumber, o1.orderDate AS date1,
+#        o2.orderDate AS date2,
+#        PERIOD_DIFF(DATE_FORMAT(o1.orderDate, '%Y%m'), DATE_FORMAT(o2.orderDate, '%Y%m')) AS diff
+# FROM orders o1, orders o2
+# WHERE o1.customerNumber = o2.customerNumber AND o1.orderDate > o2.orderDate;
+
+# 17) Заказы без оплат
+
+# SELECT c.customerNumber,
+#        o.orderNumber,
+#        p.customerNumber
+# FROM customers c
+# JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# LEFT JOIN payments p
+# ON c.customerNumber = p.customerNumber
+# WHERE p.customerNumber IS NULL;
+
+# 18) Продуктовые линейки клиента
+
+# SELECT c.customerNumber,
+#        c.customerName,
+#        GROUP_CONCAT(DISTINCT pl.productLine)
+# FROM customers c
+# JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# JOIN orderdetails od
+# ON o.orderNumber = od.orderNumber
+# JOIN products p
+# ON od.productCode = p.productCode
+# JOIN productlines pl
+# ON p.productLine = pl.productLine
+# GROUP BY c.customerNumber;
+
+# 19) Таблица по выборке
+
+# CREATE TABLE client_product_lines AS (
+# SELECT c.customerNumber,
+#        c.customerName,
+#        GROUP_CONCAT(DISTINCT pl.productLine)
+# FROM customers c
+# JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# JOIN orderdetails od
+# ON o.orderNumber = od.orderNumber
+# JOIN products p
+# ON od.productCode = p.productCode
+# JOIN productlines pl
+# ON p.productLine = pl.productLine
+# GROUP BY c.customerNumber
+# );
+
+# 21)  Работа с представлениями
+
+# CREATE VIEW client_prodlines_view AS
+# SELECT c.customerNumber,
+#        c.customerName,
+#        GROUP_CONCAT(DISTINCT pl.productLine)
+# FROM customers c
+# JOIN orders o
+# ON c.customerNumber = o.customerNumber
+# JOIN orderdetails od
+# ON o.orderNumber = od.orderNumber
+# JOIN products p
+# ON od.productCode = p.productCode
+# JOIN productlines pl
+# ON p.productLine = pl.productLine
+# GROUP BY c.customerNumber;

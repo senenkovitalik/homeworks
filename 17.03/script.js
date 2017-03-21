@@ -14,11 +14,22 @@ table.addEventListener("click", function(event) {
 });
 
 // remove task
-table.addEventListener("click", function (event) {
+table.addEventListener("click", function(event) {
     if (event.target.tagName == "BUTTON") {
         var td = event.target.parentNode;
         var row = td.parentNode;
         table.deleteRow(row.rowIndex);
+    }
+});
+
+// get indexes of checked/unchecked rows
+table.addEventListener("change", function(event) {
+    var target = event.target;
+    if (target.tagName == "INPUT" && target.type == "checkbox") {
+        var tr = event.target.parentNode.parentNode;
+        var rowIndex = tr.rowIndex;
+        var checked = target.checked;
+        checkList.processRowIndex(rowIndex, checked);
     }
 });
 
@@ -98,6 +109,50 @@ function filter(state) {
                     rows[j].style.display = "table-row";
                 }
                 break;
+        }
+    }
+}
+
+// створюємо масив відмічених рядків
+var CheckList = function() {
+    var rows = [];
+    return {
+        processRowIndex: function(rowIndex, checked) {
+            if (checked) {
+                rows.push(rowIndex);
+            } else {
+                var a = rows.indexOf(rowIndex);
+                if (a != -1) {
+                    rows.splice(a, 1);
+                }
+            }
+            rows.sort(function(a, b) {return a-b});
+        },
+        getRows: function () {
+            return rows;
+        }
+    }
+};
+
+var checkList = new CheckList();
+
+// remove all tasks or only selected
+function removeAllTasks() {
+    var list = table.rows;
+    var checkedRows = checkList.getRows();
+
+    if (checkedRows.length == 0) {
+        // remove all rows
+        for (var i = list.length-1; i > 0; i--) {
+            table.deleteRow(list[i].rowIndex);
+        }
+    } else {
+        // remove only checked rows
+        var reverseRows = checkedRows.slice(0).reverse();
+        for (var m in reverseRows) {
+            table.deleteRow(reverseRows[m]);
+            // clear list from deleted row indexes
+            checkList.processRowIndex(reverseRows[m], false);
         }
     }
 }

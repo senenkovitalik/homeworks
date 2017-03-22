@@ -1,3 +1,90 @@
+function Task(name, state = "active", rowIndex = 0) {
+    this._name = name;
+    this._state = state;
+    this._rowIndex = rowIndex;
+}
+
+Task.prototype.setName = function(name) {
+    this._name = name;
+};
+
+Task.prototype.getName = function() {
+    return this._name;
+};
+
+Task.prototype.setState = function(state) {
+    this._state = state;
+};
+
+Task.prototype.getState = function() {
+    return this._state;
+};
+
+Task.prototype.setRowIndex = function(rowIndex) {
+    this._rowIndex = rowIndex;
+};
+
+Task.prototype.getRowIndex = function() {
+    return this._rowIndex;
+};
+
+//////////////////////////////////////////////////////////////////
+
+function TaskList(){
+   this._list = [];
+}
+
+TaskList.prototype.addTask = function(taskToAdd) {
+    this._list.push(taskToAdd);
+};
+
+TaskList.prototype.removeTask = function(taskToRemove) {
+    console.log(this._list);
+    this._list.forEach(function(item, i, arr) {
+        if (Object.is(item, taskToRemove)) {
+
+        }
+    });
+};
+
+TaskList.prototype.getTasks = function() {
+    return this._list;
+};
+
+///////////////////////////////////////////////////////////////////
+
+var task = new Task('Ivan', "done", 2);
+var task2 = new Task("Vital", "active", 3);
+
+var taskList = new TaskList();
+taskList.addTask(task);
+taskList.addTask(task2);
+// console.log(taskList.getTasks());
+taskList.removeTask(task2);
+
+// створюємо масив відмічених рядків
+var CheckList = function() {
+    var rows = [];  // table row indexes
+    return {
+        processRowIndex: function(rowIndex, checked) {
+            if (checked) {
+                rows.push(rowIndex);
+            } else {
+                var a = rows.indexOf(rowIndex);
+                if (a != -1) {
+                    rows.splice(a, 1);
+                }
+            }
+            rows.sort(function(a, b) {return a-b});
+        },
+        getRows: function () {
+            return rows;
+        }
+    }
+};
+
+var checkList = new CheckList();
+
 var table = document.getElementById("list");
 // change task state
 table.addEventListener("click", function(event) {
@@ -113,29 +200,6 @@ function filter(state) {
     }
 }
 
-// створюємо масив відмічених рядків
-var CheckList = function() {
-    var rows = [];
-    return {
-        processRowIndex: function(rowIndex, checked) {
-            if (checked) {
-                rows.push(rowIndex);
-            } else {
-                var a = rows.indexOf(rowIndex);
-                if (a != -1) {
-                    rows.splice(a, 1);
-                }
-            }
-            rows.sort(function(a, b) {return a-b});
-        },
-        getRows: function () {
-            return rows;
-        }
-    }
-};
-
-var checkList = new CheckList();
-
 // remove all tasks or only selected
 function removeAllTasks() {
     var list = table.rows;
@@ -149,10 +213,38 @@ function removeAllTasks() {
     } else {
         // remove only checked rows
         var reverseRows = checkedRows.slice(0).reverse();
-        for (var m in reverseRows) {
-            table.deleteRow(reverseRows[m]);
+        for (var i in reverseRows) {
+            table.deleteRow(reverseRows[i]);
             // clear list from deleted row indexes
-            checkList.processRowIndex(reverseRows[m], false);
+            checkList.processRowIndex(reverseRows[i], false);
         }
     }
 }
+
+// change state of tasks
+function changeState(state) {
+    var checkedRows = checkList.getRows();
+    var rows = table.rows;
+    var label;
+
+    if (state == "active") {
+        label = "Active";
+    } else {
+        label = "Done";
+    }
+
+    if (checkedRows.length == 0) {
+        // check ALL rows
+        for (var i = 1; i < rows.length; i++) {
+            rows[i].setAttribute("data-state", state);
+            rows[i].cells[1].innerHTML = label;
+        }
+    } else {
+        // check ONLY SELECTED
+        checkedRows.forEach(function(item) {
+            rows[item].setAttribute("data-state", state);
+            rows[item].cells[1].innerHTML = label;
+        });
+    }
+}
+
